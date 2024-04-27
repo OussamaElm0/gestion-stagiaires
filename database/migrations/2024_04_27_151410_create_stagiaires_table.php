@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('stagiaires', function (Blueprint $table) {
             $table->id();
+            $table->string('nom');
+            $table->string('prenom');
+            $table->date('date_naissance');
+            $table->unsignedBigInteger('filiere_id');
+            $table->foreign('filiere_id')->references('id')->on('filieres');
+
+            //$table->foreignId('filiere_id')->constrained('filieres');
             $table->timestamps();
         });
     }
